@@ -4,19 +4,14 @@ import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
 public class Factory {
-    public enum MapType {
-        HASHMAP,
-        TREEMAP,
-        LINKEDHASHMAP
-    }
     
-    public static <K, V> Map<K, V> createMap(MapType type) {
+    public static <K, V> Map<K, V> setMap(String type) {
         switch (type) {
-            case HASHMAP:
+            case "HASHMAP":
                 return new HashMap<>();
-            case TREEMAP:
+            case "TREEMAP":
                 return new TreeMap<>();
-            case LINKEDHASHMAP:
+            case "LINKEDHASHMAP":
                 return new LinkedHashMap<>();
             default:
                 throw new IllegalArgumentException("Tipo de mapa desconocido: " + type);
