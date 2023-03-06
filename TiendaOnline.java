@@ -119,6 +119,10 @@ public class TiendaOnline {
         }
     }
     
+
+
+
+
     // Mostrar el producto y la categoría de todo el inventario. 
     public void mostrarInventarioCompleto() {
         System.out.println("Inventario completo:");
@@ -130,23 +134,22 @@ public class TiendaOnline {
 
     // Mostrar el producto y la categoría de todo el inventario ordenado por tipo
     public void mostrarInventarioPorCategoria() {
-        System.out.println("Inventario por categoría:");
+        System.out.println("Inventario por categoria:");
     
         // Crear una lista de categorías únicas
-        List<String> categoriasUnicas = new ArrayList<>(new HashSet<>(catalogo.values()));
+        List<String> categoriasUnicas = new ArrayList<>(new HashSet<>(catalogo.keySet()));
     
         // Iterar a través de las categorías y mostrar los productos correspondientes
         for (String categoria : categoriasUnicas) {
             System.out.println("Categoria: " + categoria);
             for (Map.Entry<String, String> entry : catalogo.entrySet()) {
-                if (entry.getValue().equals(categoria)) {
-                    System.out.println("    Producto: " + entry.getKey());
+                if (entry.getKey().equals(categoria)) {
+                    System.out.println("    Producto: " + entry.getValue());
                 }
             }
         }
     }
     
-
 
     
     /** 

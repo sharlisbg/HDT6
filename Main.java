@@ -40,7 +40,7 @@ public class Main {
         System.out.println("1.Agregar un producto a la coleccion del usuario. \n"+ 
         "2.	Mostrar la categoria del producto. \n"+ 
         "3.	Mostrar los datos del producto, categoria y la cantidad de cada articulo de su coleccion. \n"+ 
-        "4.	Mostrar los datos del producto, categoría y la cantidad de cada articulo de su colección, ordenadas por tipo. \n"+ 
+        "4.	Mostrar los datos del producto, categoria y la cantidad de cada articulo de su coleccion, ordenadas por tipo. \n"+ 
         "5.	Mostrar el producto y la categoria de todo el inventario. \n"+ 
         "6.	Mostrar el producto y la categoria existentes, ordenadas por tipo.");
         int opcion = in.nextInt();
