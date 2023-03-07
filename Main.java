@@ -1,7 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -11,15 +7,19 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in); // Se crea el scanner
         String fileName = "ListadoProducto.txt"; // nombre del archivo
-        Map<String, List<String>> catalogo = LeerArchivo.leerArchivo(fileName);
+        System.out.println("Ingrese el nombre del medio por el cual quiere leer el catalogo en nuestro sistema:\nIngrese HASHMAP, TREEMAP o LINKEDHASHMAP");
+        String tipoarchivo = in.nextLine();
+        Map<String, List<String>> catalogo = LeerArchivo.leerArchivo(fileName, tipoarchivo);
 
-        
         //Crear Tienda online
         TiendaOnline miTienda = new TiendaOnline(); 
         miTienda.setCatalogo(catalogo); // Establecemos nuestro catalogo global el leído por el archivo txt
+        Map<String, List<String>> coleccion = Factory.setMap(tipoarchivo);
+        miTienda.setColeccion(coleccion);
+
 
         System.out.println("Bienvenido a Su Tienda Online");
-
+        // Se crea el menu con todas las opciones necesarias que se evaluaran
         System.out.println("Menu");
         System.out.println("Seleccione la opcion que desea visualizar: ");
         String menu = "  \n"+ 
@@ -35,16 +35,14 @@ public class Main {
         while(opcion <7){
             switch (opcion){
                 case 1:{
-                    System.out.println("Ingrese el nombre del medio por el cual quiere trabajar en nuestro sistema:\nIngrese HASHMAP, TREEMAP o LINKEDHASHMAP");
-                    String respuesta = in.nextLine();
-                    miTienda.setColeccion(miTienda.crearMap(respuesta, miTienda.getCatalogo()));
+                    miTienda.setColeccion(miTienda.crearMap(miTienda.getColeccion(), miTienda.getCatalogo()));
                     break;
                 }
 
                 case 2:{
                     System.out.println("Ingrese el nombre del producto");
                     String producto = in.nextLine();
-                    miTienda.obtenerCategoria(producto, catalogo);
+                    miTienda.obtenerCategoria(producto, miTienda.getCatalogo());
                     break;
                 }
 

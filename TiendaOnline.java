@@ -23,8 +23,8 @@ public class TiendaOnline {
      * @param tipoMapa, mapaInventario
      * @return Map<String, String>
      */
-    public Map<String, List<String>> crearMap(String tipoMapa, Map<String, List<String>> catalogo) {
-        Map<String, List<String>> mapa = Factory.setMap(tipoMapa);
+
+    public Map<String, List<String>> crearMap(Map<String, List<String>> coleccion, Map<String, List<String>> catalogo) {
         Scanner scanner = new Scanner(System.in);
     
         System.out.println("Ingrese la cantidad de categorias que desea agregar al mapa:");
@@ -32,15 +32,15 @@ public class TiendaOnline {
         scanner.nextLine();
     
         for (int i = 0; i < cantCategorias; i++) {
-            System.out.println("Ingrese el nombre de la categoría:");
+            System.out.println("Ingrese el nombre de la categoria:");
             String categoria = scanner.nextLine();
     
             if (!catalogo.containsKey(categoria)) {
-                System.out.println("La categoría " + categoria + " no es válida.");
+                System.out.println("La categoria " + categoria + " no es valida.");
                 continue;
             }
     
-            System.out.println("Ingrese la cantidad de productos que desea agregar a la categoría " + categoria + ":");
+            System.out.println("Ingrese la cantidad de productos que desea agregar a la categoria " + categoria + ":");
             int cantProductos = scanner.nextInt();
             scanner.nextLine();
     
@@ -51,7 +51,7 @@ public class TiendaOnline {
     
                 List<String> productosValidos = catalogo.get(categoria);
                 if (!productosValidos.contains(producto)) {
-                    System.out.println("El producto " + producto + " no es válido para la categoría " + categoria + ".");
+                    System.out.println("El producto " + producto + " no es valido para la categoria " + categoria + ".");
                     continue;
                 }
     
@@ -59,10 +59,10 @@ public class TiendaOnline {
             }
     
             if (!productos.isEmpty()) {
-                mapa.put(categoria, productos);
+                coleccion.put(categoria, productos);
             }
         }
-        return mapa;
+        return coleccion;
     }
     
     
@@ -81,7 +81,7 @@ public class TiendaOnline {
                 return entry.getKey();
             }
         }
-        return null; // si no se encuentra el producto en el HashMap, se devuelve null
+        return null;
     }
 
 
@@ -103,7 +103,7 @@ public class TiendaOnline {
             List<String> productos = coleccion.get(categoria);
             for (String producto : productos) {
                 int cantidad = cantidadProductos.get(producto);
-                System.out.println("Categoría: " + categoria + " | Producto: " + producto + " | Cantidad: " + cantidad);
+                System.out.println("Categoria: " + categoria + " | Producto: " + producto + " | Cantidad: " + cantidad);
             }
         }
     }
@@ -134,7 +134,7 @@ public class TiendaOnline {
             List<String> productos = coleccion.get(categoria);
             for (String producto : productos) {
                 int cantidad = cantidadProductos.get(producto);
-                System.out.println("Categoría: " + categoria + " | Producto: " + producto + " | Cantidad: " + cantidad);
+                System.out.println("Categoria: " + categoria + " | Producto: " + producto + " | Cantidad: " + cantidad);
             }
         }
     } 

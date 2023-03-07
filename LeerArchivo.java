@@ -2,13 +2,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class LeerArchivo {
-    public static Map<String, List<String>> leerArchivo(String nombreArchivo) {
-        Map<String, List<String>> mapa = new HashMap<>();
+    public static Map<String, List<String>> leerArchivo(String nombreArchivo, String tipoMapa) {
+        Map<String, List<String>> mapa = Factory.setMap(tipoMapa);
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(nombreArchivo));
