@@ -13,7 +13,8 @@ public class TiendaOnline {
     /*
      * Constructor de Tienda Online del usuario
      */
-    public TiendaOnline() {
+    public TiendaOnline(String tipoMapa) {
+        this.coleccion = Factory.setMap(tipoMapa);
     }
 
     

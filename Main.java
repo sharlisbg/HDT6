@@ -7,16 +7,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in); // Se crea el scanner
         String fileName = "ListadoProducto.txt"; // nombre del archivo
-        System.out.println("Ingrese el nombre del medio por el cual quiere leer el catalogo en nuestro sistema:\nIngrese HASHMAP, TREEMAP o LINKEDHASHMAP");
+        System.out.println("Ingrese el nombre del medio por el cual quiere leer el catalogo y crear su coleccion en nuestro sistema:\nIngrese HASHMAP, TREEMAP o LINKEDHASHMAP");
         String tipoarchivo = in.nextLine();
         Map<String, List<String>> catalogo = LeerArchivo.leerArchivo(fileName, tipoarchivo);
 
         //Crear Tienda online
-        TiendaOnline miTienda = new TiendaOnline(); 
+        TiendaOnline miTienda = new TiendaOnline(tipoarchivo); 
         miTienda.setCatalogo(catalogo); // Establecemos nuestro catalogo global el leído por el archivo txt
-        Map<String, List<String>> coleccion = Factory.setMap(tipoarchivo);
-        miTienda.setColeccion(coleccion);
-
 
         System.out.println("Bienvenido a Su Tienda Online");
         // Se crea el menu con todas las opciones necesarias que se evaluaran
